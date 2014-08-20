@@ -1,0 +1,5 @@
+AirplaneQueue, toy class
+by Bill Arndt
+
+command to run tests:
+rspec spec
