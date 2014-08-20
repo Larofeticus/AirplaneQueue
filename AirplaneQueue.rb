@@ -35,7 +35,7 @@ class AirplaneQueue
 
   def dequeue
     return nil if @waiting == 0
-    ACTYPES.each do |type|
+    ACTYPES.each do |type|   #visit queue in order of AC priority, if it's not empty shift and return
       next if @queue[type].empty?
       @waiting-=1
       return @queue[type].shift
