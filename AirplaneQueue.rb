@@ -26,8 +26,20 @@ class AirplaneQueue
     ACTYPES.each { |type| @queue[type] = [] } 
   end
 
+  def enqueue (name, params)
+    type = self._buildType(params)
+    return nil unless type
+    @waiting+=1
+    @queue[type].push(name)
+  end
+
   def dequeue
     return nil if @waiting == 0
+    ACTYPES.each do |type|
+      next if @queue[type].empty?
+      @waiting-=1
+      return @queue[type].shift
+    end
   end
 
   #helper method, takes type hash from a new airplane, returns it's type string
